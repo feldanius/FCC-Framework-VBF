@@ -25,7 +25,7 @@ nCPUS = -1
 
 # Escala los histogramas con la sección transversal y la luminosidad integrada
 doScale = True
-intLumi = 5000000  # 5 /ab
+intLumi = 2400000  # 2.4 /ab
 
 # Define la binning para varios histogramas
 bins_p_mu = (2000, 0, 200)  # Bins de 100 MeV
