@@ -101,10 +101,17 @@ compile_headers(includePaths)
 
 # Función para cargar archivos
 def load_files(process_name):
-    chain = ROOT.TChain("events")  # Reemplaza "treeName" con el nombre correcto del TTree
+    chain = ROOT.TChain("events")  # Reemplaza "events" con el nombre correcto del TTree
     for file in processList[process_name]['files']:
-        chain.Add(file)
+        # Intenta abrir el archivo con TFile::Open para manejar archivos remotos
+        f = ROOT.TFile.Open(f"root://eospublic.cern.ch/{file}")
+        if f and not f.IsZombie():  # Verifica si el archivo fue abierto exitosamente
+            chain.Add(file)
+            f.Close()  # Cierra el archivo después de verificarlo
+        else:
+            print(f"Error to open de file {file}")
     return chain
+
 
 # Función build_graph que contiene la lógica de análisis, cortes y histogramas (obligatorio)
 def build_graph(process_name):
