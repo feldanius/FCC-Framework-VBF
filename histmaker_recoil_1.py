@@ -61,7 +61,7 @@ procDict = "FCCee_procDict_winter2023_IDEA.json"
 includePaths = ["functions_1.h"]
 
 # Define the input dir (optional)
-inputDir = "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/"
+inputDir = "/afs/cern.ch/user/f/fdmartin/FCCAnalyses/tutorial"
 
 #Optional: output directory, default is local running directory
 outputDir = "./outputs/histmaker_1/recoil_1/"
