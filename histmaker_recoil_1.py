@@ -58,10 +58,10 @@ processList = {
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 # additional/custom C++ functions, defined in header files (optional)
-includePaths = ["functions_1.h"]
+includePaths = ["functions_2.h"]
 
 # Define the input dir (optional)
-inputDir = "/afs/cern.ch/user/f/fdmartin/FCCAnalyses/tutorial"
+inputDir = "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA"
 
 #Optional: output directory, default is local running directory
 outputDir = "./outputs/histmaker_1/recoil_1/"
