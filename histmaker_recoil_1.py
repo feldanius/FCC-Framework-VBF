@@ -5,7 +5,7 @@ import os
 processList = {
     'wzp6_ee_eeH_ecm365': {
         'files': [
-            "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/wzp6_ee_eeH_ecm365/events_018107429.root",
+            #"/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/wzp6_ee_eeH_ecm365/events_018107429.root",
             "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/wzp6_ee_eeH_ecm365/events_104473316.root",
             "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/wzp6_ee_eeH_ecm365/events_117039771.root",
             "/eos/experiment/fcc/ee/generation/DelphesEvents/winter2023/IDEA/wzp6_ee_eeH_ecm365/events_130128294.root",
@@ -101,7 +101,7 @@ compile_headers(includePaths)
 
 # Función para cargar archivos
 def load_files(process_name):
-    chain = ROOT.TChain("events")  # Reemplaza "events" con el nombre correcto del TTree
+    chain = ROOT.TChain("events")  
     for file in processList[process_name]['files']:
         # Intenta abrir el archivo con TFile::Open para manejar archivos remotos
         f = ROOT.TFile.Open(f"root://eospublic.cern.ch/{file}")
