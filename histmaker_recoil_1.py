@@ -53,6 +53,7 @@ processList = {
     }
 }
 
+prodTag     = "FCCee/winter2023/IDEA/"
 
 # Link to the dictonary that contains all the cross section informations etc... (mandatory)
 procDict = "FCCee_procDict_winter2023_IDEA.json"
