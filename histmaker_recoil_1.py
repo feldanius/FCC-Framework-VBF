@@ -115,7 +115,7 @@ def load_files(process_name):
 
 
 # Función build_graph que contiene la lógica de análisis, cortes y histogramas (obligatorio)
-def build_graph(process_name):
+def build_graph(process_name, *args):
     chain = load_files(process_name)
     df = ROOT.RDataFrame(chain)
 
