@@ -107,6 +107,8 @@ compile_headers(includePaths)
 
 # Function to load files
 def load_files(process_name):
+    if process_name not in processList:
+        raise KeyError(f"Process name '{process_name}' not found in processList.")
     chain = ROOT.TChain("events")  
     for file in processList[process_name]['files']:
         # Intenta abrir el archivo con TFile::Open para manejar archivos remotos
@@ -121,6 +123,8 @@ def load_files(process_name):
 
 # build_graph function that contains the analysis logic, cuts and histograms (mandatory)
 def build_graph(process_name, *args):
+    if not isinstance(process_name, str):
+        raise TypeError(f"Expected a string for process_name, got {type(process_name).__name__} instead.")
     chain = load_files(process_name)
     df = ROOT.RDataFrame(chain)
 
