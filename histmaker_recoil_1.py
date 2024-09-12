@@ -74,7 +74,7 @@ nCPUS = -1
 doScale = True
 intLumi = 2400000  # 2.4 /ab
 
-# Define la binning para varios histogramas
+# Define binning several histograms
 bins_p_mu = (2000, 0, 200)  # Bins de 100 MeV
 bins_m_ll = (2000, 0, 200)  # Bins de 100 MeV
 bins_p_ll = (2000, 0, 200)  # Bins de 100 MeV
@@ -89,7 +89,7 @@ bins_count = (50, 0, 50)
 bins_charge = (10, -5, 5)
 bins_iso = (500, 0, 5)
 
-# Función para compilar los archivos de encabezado personalizados
+# Function to compile custom header files
 def compile_headers(includePaths):
     for path in includePaths:
         if os.path.exists(path):
@@ -97,10 +97,10 @@ def compile_headers(includePaths):
         else:
             print(f"Archivo {path} no encontrado.")
 
-# Compila las cabeceras personalizadas antes de realizar el análisis
+# Compile custom header files before analysis
 compile_headers(includePaths)
 
-# Función para cargar archivos
+# Function to load files
 def load_files(process_name):
     chain = ROOT.TChain("events")  
     for file in processList[process_name]['files']:
@@ -114,12 +114,12 @@ def load_files(process_name):
     return chain
 
 
-# Función build_graph que contiene la lógica de análisis, cortes y histogramas (obligatorio)
+# build_graph function that contains the analysis logic, cuts and histograms (mandatory)
 def build_graph(process_name, *args):
     chain = load_files(process_name)
     df = ROOT.RDataFrame(chain)
 
-    # Escala de peso por sección transversal y luminosidad
+    # Scale for weight by cross-section and luminosity 
     if doScale:
         crossSection = processList[process_name]['crossSection']
         weightScale = crossSection * intLumi
@@ -127,7 +127,7 @@ def build_graph(process_name, *args):
 
     weightsum = df.Sum("weight")
     
-    # Define algunos alias para usar más adelante
+    # define some aliases to be used later on
     df = df.Alias("Particle0", "Particle#0.index")
     df = df.Alias("Particle1", "Particle#1.index")
     df = df.Alias("MCRecoAssociations0", "MCRecoAssociations#0.index")
@@ -135,11 +135,11 @@ def build_graph(process_name, *args):
     df = df.Alias("Muon0", "Muon#0.index")
     df = df.Alias("Electron0", "Electron#0.index")
 
-    # Obtén todos los leptones de la colección
+    # get all the leptons from the collection
     df = df.Define("muons_all", "FCCAnalyses::ReconstructedParticle::get(Muon0, ReconstructedParticles)")
     df = df.Define("electrons_all", "FCCAnalyses::ReconstructedParticle::get(Electron0, ReconstructedParticles)")
 
-    # Selecciona leptones con momento > 20 GeV
+    # select leptons with momentum > 20 GeV
     df = df.Define("muons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(muons_all)")
     df = df.Define("electrons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(electrons_all)")
     
@@ -154,16 +154,16 @@ def build_graph(process_name, *args):
     df = df.Define("muons_no", "FCCAnalyses::ReconstructedParticle::get_n(muons)")
     df = df.Define("electrons_no", "FCCAnalyses::ReconstructedParticle::get_n(electrons)")
 
-    # Calcula el aislamiento de muones y electrones y guarda los leptones con un corte de aislamiento de 0.25 en una columna separada
+    # compute the muon isolation and store muons with an isolation cut of 0.25 in a separate column muons_sel_iso
     df = df.Define("muons_iso", "FCCAnalyses::ZHfunctions::coneIsolation(0.01, 0.5)(muons, ReconstructedParticles)")
     df = df.Define("electrons_iso", "FCCAnalyses::ZHfunctions::coneIsolation(0.01, 0.5)(electrons, ReconstructedParticles)")
     df = df.Define("muons_sel_iso", "FCCAnalyses::ZHfunctions::sel_iso(0.25)(muons, muons_iso)")
     df = df.Define("electrons_sel_iso", "FCCAnalyses::ZHfunctions::sel_iso(0.25)(electrons, electrons_iso)")
 
-    # Filtra jets que contienen muones o electrones
+    # Filterjets that contain muons or electrons
     df = df.Define("jets_no_leptons", "FCCAnalyses::ZHfunctions::removeJetsWithLeptons(Jets, muons, electrons)")
 
-    # Histograma base, antes de cualquier selección de corte (guardar con _cut0)
+    # baseline histograms, before any selection cuts (store with _cut0)
     results = []
     results.append(df.Histo1D(("muons_p_cut0", "", *bins_p_mu), "muons_p"))
     results.append(df.Histo1D(("muons_theta_cut0", "", *bins_theta), "muons_theta"))
@@ -173,20 +173,20 @@ def build_graph(process_name, *args):
     results.append(df.Histo1D(("muons_iso_cut0", "", *bins_iso), "muons_iso"))
 
     #########
-    ### CUT 0: todos los eventos
+    ### CUT 0: all events
     #########
     df = df.Define("cut0", "0")
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut0"))
 
     #########
-    ### CUT 1: al menos 1 muón o electrón con al menos uno aislado
+    ### CUT 1: at least 1 muon with at least one isolated one
     #########
     df = df.Filter("muons_no >= 1 && muons_sel_iso.size() > 0 || electrons_no >= 1 && electrons_sel_iso.size() > 0")
     df = df.Define("cut1", "1")
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1"))
 
     #########
-    ### CUT 2: al menos 2 leptones de signo opuesto (OS)
+    ### CUT 2: at least 2 opposite-sign (OS) leptons
     #########
     df = df.Filter("muons_no >= 2 && abs(Sum(muons_q)) < muons_q.size()")
     df = df.Define("cut2", "2")
@@ -240,18 +240,4 @@ def build_graph(process_name, *args):
     results.append(df.Histo1D(("higgs_muons_p", "", *bins_p_mu), "higgs_muons_p"))
 
     return results, weightsum
-
-##### Guarda los resultados en archivos .root de salida
-#def save_to_output(process_name, output_file):
- #   chain = load_files(process_name)
-  #  df = ROOT.RDataFrame(chain)
-    
-   #### Aplica tus filtros, selecciones, y cálculos sobre el DataFrame 'df'
-  #  df_processed = df.Filter("your_condition").Define("new_variable", "some_expression")
-    
-    ##### Guarda los resultados en un archivo .root de salida
-    #df_processed.Snapshot("treeName", output_file)
-
-# Ejemplo de uso
-#save_to_output('p8_ee_WW_mumu_ecm240', "output_WW_mumu.root")
 #save_to_output('p8_ee_ZH_Zmumu_ecm240', "output_ZH_Zmumu.root")
