@@ -1,5 +1,5 @@
-#ifndef ZHfunctions_H
-#define ZHfunctions_H
+#ifndef HIGGS_ANALYSIS_H
+#define HIGGS_ANALYSIS_H
 
 #include <cmath>
 #include <vector>
@@ -15,7 +15,7 @@
 #include "ReconstructedParticle2MC.h"
 
 
-namespace FCCAnalyses { namespace ZHfunctions {
+namespace FCCAnalyses { namespace HIGGS_ANALYSIS {
 
 // build the Higgs resonance based on the available b-jets. Returns the best b-jet pair compatible with the Higgs mass and the recoil.
 struct HiggsResonanceBuilder {
