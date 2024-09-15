@@ -68,7 +68,7 @@ def build_graph(df, dataset):
 
     # get all the leptons from the collection
     df = df.Define("muons_all", "FCCAnalyses::ReconstructedParticle::get(Muon0, ReconstructedParticles)")
-    df = df.Define("electrons_all", "FCCAnalyses::ReconstructedParticle::get(Electron0, ReconstructedParticles)")#############3
+    df = df.Define("electrons_all", "FCCAnalyses::ReconstructedParticle::get(Electron0, ReconstructedParticles)")############
     
     # select leptons with momentum > 20 GeV
     df = df.Define("muons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(muons_all)")
@@ -146,7 +146,8 @@ def build_graph(df, dataset):
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
 
     # Higgs mass window
-    df = df.Define("higgsbuilder_result", "FCCAnalyses::HIGGS_ANALYSIS::HiggsResonanceBuilder(125, 150, 0.4, 365, false)(muons,electrons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
+    df = df.Define("combined_leptons", "Concatenate(muons, electrons)")
+    df = df.Define("higgsbuilder_result", "FCCAnalyses::HIGGS_ANALYSIS::HiggsResonanceBuilder(125, 150, 0.4, 365, false)(combined_leptons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
     df = df.Define("higgs", "Vec_rp{higgsbuilder_result[0]}") # the Higgs
     df = df.Define("higgs_muons", "Vec_rp{higgsbuilder_result[1],higgsbuilder_result[2]}") # the leptons 
     df = df.Define("higgs_m", "FCCAnalyses::ReconstructedParticle::get_mass(higgs)")
