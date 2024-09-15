@@ -187,7 +187,7 @@ def build_graph(df, dataset):
     #########
     ### CUT 6: recoil mass window
     #########  
-    df = df.Filter("higgs_recoil_m < 140 && zmumu_recoil_m > 120")
+    df = df.Filter("higgs_recoil_m < 140 && higgs_recoil_m > 120")
     df = df.Define("cut6", "6")
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut6"))
     
