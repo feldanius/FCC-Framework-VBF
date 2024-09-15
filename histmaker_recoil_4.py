@@ -146,7 +146,7 @@ def build_graph(df, dataset):
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
 
     # Higgs mass window
-    df = df.Define("higgsbuilder_result", "FCCAnalyses::HIGGS_ANALYSIS::resonanceBuilder_mass_recoil(125, 150, 0.4, 365, false)(muons,electrons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
+    df = df.Define("higgsbuilder_result", "FCCAnalyses::HIGGS_ANALYSIS::HiggsResonanceBuilder(125, 150, 0.4, 365, false)(muons,electrons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
     df = df.Define("higgs", "Vec_rp{higgsbuilder_result[0]}") # the Higgs
     df = df.Define("higgs_muons", "Vec_rp{higgsbuilder_result[1],higgsbuilder_result[2]}") # the leptons 
     df = df.Define("higgs_m", "FCCAnalyses::ReconstructedParticle::get_mass(higgs)")
