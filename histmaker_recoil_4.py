@@ -122,13 +122,13 @@ def build_graph(df, dataset):
     #########
     df = df.Filter("muons_no >= 1 && muons_sel_iso.size() > 0")
     df = df.Define("cut1_muons", "1")
-    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1"))
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1_muons"))
 
     ### CUT 1: at least 1 electron with at least one isolated one (electrons)
     #########
-    #df = df.Filter("electrons_no >= 1 && electrons_sel_iso.size() > 0")
-    #df = df.Define("cut1_electrons", "1")
-    #results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1"))
+    df = df.Filter("electrons_no >= 1 && electrons_sel_iso.size() > 0")
+    df = df.Define("cut1_electrons", "1")
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1_electrons"))
 
     
     #########
@@ -136,14 +136,14 @@ def build_graph(df, dataset):
     #########
     df = df.Filter("muons_no >= 2 && abs(Sum(muons_q)) < muons_q.size()")
     df = df.Define("cut2_muons", "2")
-    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2"))
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_muons"))
 
     #########
     ### CUT 2 :at least 2 opposite-sign (OS) leptons
     #########
-    #df = df.Filter("electrons_no >= 2 && abs(Sum(electrons_q)) < electrons_q.size()")
-    #df = df.Define("cut2_electrons", "2")
-    #results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2"))
+    df = df.Filter("electrons_no >= 2 && abs(Sum(electrons_q)) < electrons_q.size()")
+    df = df.Define("cut2_electrons", "2")
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
 
     # Higgs mass window
     df = df.Define("higgsbuilder_result", "FCCAnalyses::HIGGS_ANALYSIS::resonanceBuilder_mass_recoil(125, 150, 0.4, 365, false)(muons,electrons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
