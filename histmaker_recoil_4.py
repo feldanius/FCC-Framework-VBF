@@ -134,14 +134,14 @@ def build_graph(df, dataset):
     #########
     ### CUT 2 :at least 2 opposite-sign (OS) leptons
     #########
-    df = df.Filter("muons_no >= 2 && abs(Sum(muons_q)) < muons_q.size()")
+    df = df.Filter("muons_no >= 2 && Sum(muons_q) == 0")
     df = df.Define("cut2_muons", "2")
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_muons"))
 
     #########
     ### CUT 2 :at least 2 opposite-sign (OS) leptons
     #########
-    df = df.Filter("electrons_no >= 2 && abs(Sum(electrons_q)) < electrons_q.size()")
+    df = df.Filter("electrons_no >= 2 && Sum(electrons_q) == 0")
     df = df.Define("cut2_electrons", "2")
     results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
 
