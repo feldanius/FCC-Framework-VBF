@@ -141,7 +141,10 @@ class RDFanalysis:
         
         df = df.Define("higgs_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_mu)")
         df = df.Define("higgs_m_el", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_el)")
-        
+       
+        df = df.Define("higgs_p_mu", "FCCAnalyses::ReconstructedParticle::get_p(higgs_mu)")
+        df = df.Define("higgs_p_el", "FCCAnalyses::ReconstructedParticle::get_p(higgs_el)")
+       
         df = df.Define("higgs_recoil_mu", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs_mu)")
         df = df.Define("higgs_recoil_el", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs_el)")
         df = df.Define("higgs_recoil_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil_mu)[0]")
