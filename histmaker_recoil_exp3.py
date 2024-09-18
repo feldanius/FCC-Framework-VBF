@@ -169,7 +169,7 @@ def build_graph(df, dataset):
 #    df = df.Define("zmumu_recoil_m", "FCCAnalyses::ReconstructedParticle::get_mass(zmumu_recoil)[0]") # recoil mass
 #    df = df.Define("zmumu_muons_p", "FCCAnalyses::ReconstructedParticle::get_p(zmumu_muons)") # get the momentum of the 2 muons from the Z resonance
 #######################################################################################################
-    df = df.Define("higgsbuilder_result", "FCCAnalyses::ZHfunctions::resonanceBuilder_mass_recoil(125, 150, 0.4, 365, false)(muons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
+    df = df.Define("higgsbuilder_result", "FCCAnalyses::ZHfunctions::HiggsResonanceBuilder(125, 150, 0.4, 365, false)(muons, MCRecoAssociations0, MCRecoAssociations1, ReconstructedParticles, Particle, Particle0, Particle1)")
     df = df.Define("higgs", "Vec_rp{higgsbuilder_result[0]}") # the Higgs
     df = df.Define("higgs_muons", "Vec_rp{higgsbuilder_result[1],higgsbuilder_result[2]}") # the leptons 
   #  df = df.Define("higgs_m", "FCCAnalyses::ReconstructedParticle::get_mass(higgs)")
