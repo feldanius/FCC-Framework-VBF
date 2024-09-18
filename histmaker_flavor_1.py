@@ -63,18 +63,20 @@ def build_graph(df, dataset):
    #########
     ### CUT 4: Higgs mass window
     #########
-    df = df.Filter("zmumu_m > 120 && zmumu_m < 130")
+    df = df.Filter("higgs_m_mu > 120 && higgs_m_mu < 130")
+    df = df.Filter("higgs_m_el > 120 && higgs_m_el < 130")
 
     #########
     ### CUT 5: Higgs momentum
     #########
-    df = df.Filter("zmumu_p > 10 && zmumu_p < 100")
+    df = df.Filter("higgs_p_mu > 10 && higgs_p_mu < 100")
+    df = df.Filter("higgs_p_el > 10 && higgs_p_el < 100")
 
     #########
     ### CUT 6: recoil mass window
     #########
-    df = df.Filter("zmumu_recoil_m < 240 && zmumu_recoil_m > 220")
-
+    df = df.Filter("higgs_recoil_m_mu < 240 && higgs_recoil_m_mu > 220")
+    df = df.Filter("higgs_recoil_m_el < 240 && higgs_recoil_m_el > 220")
     #########
     ### CUT 7: cut on the jet tagging score to select H->bb events
     #########
