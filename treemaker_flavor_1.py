@@ -138,6 +138,12 @@ class RDFanalysis:
         
         df = df.Define("higgs_mu", "Vec_rp{higgsbuilder_result_muons[0]}")  # the Higgs
         df = df.Define("higgs_el", "Vec_rp{higgsbuilder_result_electrons[0]}")  # the Higgs
+        df = df.Define(
+            "higgs_muons", "Vec_rp{higgsbuilder_result_muons[1],higgsbuilder_result_muons[2]}"
+        ) 
+        df = df.Define(
+            "higgs_electrons", "Vec_rp{higgsbuilder_result_electrons[1],higgsbuilder_result_electrons[2]}"
+        ) 
         
         df = df.Define("higgs_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_mu)")
         df = df.Define("higgs_m_el", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_el)")
@@ -149,6 +155,8 @@ class RDFanalysis:
         df = df.Define("higgs_recoil_el", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs_el)")
         df = df.Define("higgs_recoil_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil_mu)[0]")
         df = df.Define("higgs_recoil_m_el", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil_el)[0]")
+        df = df.Define("higgs_recoil_p_mu", "FCCAnalyses::ReconstructedParticle::get_p(higgs_muons)[0]")
+        df = df.Define("higgs_recoil_p_el", "FCCAnalyses::ReconstructedParticle::get_p(higgs_electrons)[0]")
 
         df = df.Define("missingEnergy", "FCCAnalyses::ZHfunctions::missingEnergy(365., ReconstructedParticles)")
         df = df.Define("cosTheta_miss", "FCCAnalyses::ZHfunctions::get_cosTheta_miss(MissingET)")
@@ -170,10 +178,10 @@ class RDFanalysis:
             "higgs_m_el",
             "higgs_p_mu",
             "higgs_p_el",
-            "higgs_muons_p_m",
-            "higgs_muons_p_e",
             "higgs_recoil_m_mu",
             "higgs_recoil_m_el",
+            "higgs_recoil_p_mu",
+            "higgs_recoil_p_el",
             "cosTheta_miss",
             "missing_p",
             "jj_m",
