@@ -142,8 +142,10 @@ class RDFanalysis:
         df = df.Define("higgs_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_mu)")
         df = df.Define("higgs_m_el", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_el)")
         
-        df = df.Define("higgs_recoil", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs)")
-        df = df.Define("higgs_recoil_m", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil)[0]")
+        df = df.Define("higgs_recoil_mu", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs_mu)")
+        df = df.Define("higgs_recoil_el", "FCCAnalyses::ReconstructedParticle::recoilBuilder(365)(higgs_el)")
+        df = df.Define("higgs_recoil_m_mu", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil_mu)[0]")
+        df = df.Define("higgs_recoil_m_el", "FCCAnalyses::ReconstructedParticle::get_mass(higgs_recoil_el)[0]")
 
         df = df.Define("missingEnergy", "FCCAnalyses::ZHfunctions::missingEnergy(365., ReconstructedParticles)")
         df = df.Define("cosTheta_miss", "FCCAnalyses::ZHfunctions::get_cosTheta_miss(MissingET)")
@@ -167,7 +169,8 @@ class RDFanalysis:
             "higgs_p_el",
             "higgs_muons_p_m",
             "higgs_muons_p_e",
-            "higgs_recoil_m",
+            "higgs_recoil_m_mu",
+            "higgs_recoil_m_el",
             "cosTheta_miss",
             "missing_p",
             "jj_m",
