@@ -4,8 +4,8 @@
 #include <cmath>
 #include <vector>
 #include <math.h>
-#include <algorithm>  //extra
-#include <iostream>   //extra
+//#include <algorithm>  //extra
+//#include <iostream>   //extra
 
 #include "TLorentzVector.h"
 #include "ROOT/RVec.hxx"
@@ -17,7 +17,7 @@
 
 namespace FCCAnalyses { namespace HIGGS_ANALYSIS {
 
-// build the Higgs resonance based on the available b-jets. Returns the best b-jet pair compatible with the Higgs mass and the recoil.
+// build the Higgs resonance based on the available jets. Returns the jet pair compatible with the Higgs mass and the recoil.
 struct HiggsResonanceBuilder {
     float m_higgs_mass;
     float m_recoil_mass;
