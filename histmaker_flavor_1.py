@@ -85,12 +85,8 @@ def build_graph(df, dataset):
 
     results.append(df.Histo1D(("higgs_m_mu", "", *bins_m_ll), "higgs_m_mu"))
     results.append(df.Histo1D(("higgs_m_el", "", *bins_m_ll), "higgs_m_el"))
-    results.append(
-        df.Histo1D(("higgs_recoil_m_mu", "", *bins_recoil), "higgs_recoil_m_mu")
-    )
-   results.append(
-        df.Histo1D(("higgs_recoil_m_el", "", *bins_recoil), "higgs_recoil_m_el")
-    )
+    results.append(df.Histo1D(("higgs_recoil_m_mu", "", *bins_recoil), "higgs_recoil_m_mu"))
+    results.append(df.Histo1D(("higgs_recoil_m_el", "", *bins_recoil), "higgs_recoil_m_el"))
     results.append(df.Histo1D(("higgs_p_mu", "", *bins_p_ll), "higgs_p_mu"))
     results.append(df.Histo1D(("higgs_p_el", "", *bins_p_ll), "higgs_p_el"))
     results.append(df.Histo1D(("jj_m", "", *bins_m_jj), "jj_m"))
