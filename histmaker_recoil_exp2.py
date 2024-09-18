@@ -64,16 +64,16 @@ def build_graph(df, dataset):
     df = df.Alias("MCRecoAssociations0", "MCRecoAssociations#0.index")
     df = df.Alias("MCRecoAssociations1", "MCRecoAssociations#1.index")
     df = df.Alias("Muon0", "Muon#0.index")
-    #df = df.Alias("Electron0", "Electron#0.index") ########################
+    df = df.Alias("Electron0", "Electron#0.index") ########################
 
 
     # get all the leptons from the collection
     df = df.Define("muons_all", "FCCAnalyses::ReconstructedParticle::get(Muon0, ReconstructedParticles)")
-   #  df = df.Define("electrons_all", "FCCAnalyses::ReconstructedParticle::get(Electron0, ReconstructedParticles)")#########################
+    df = df.Define("electrons_all", "FCCAnalyses::ReconstructedParticle::get(Electron0, ReconstructedParticles)")#########################
     
     # select leptons with momentum > 20 GeV
     df = df.Define("muons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(muons_all)")
-   # df = df.Define("electrons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(electrons_all)") ####################
+    df = df.Define("electrons", "FCCAnalyses::ReconstructedParticle::sel_p(20)(electrons_all)") ####################
     
     df = df.Define("muons_p", "FCCAnalyses::ReconstructedParticle::get_p(muons)")
     df = df.Define("muons_theta", "FCCAnalyses::ReconstructedParticle::get_theta(muons)")
@@ -82,11 +82,11 @@ def build_graph(df, dataset):
     df = df.Define("muons_no", "FCCAnalyses::ReconstructedParticle::get_n(muons)")
 
    ########################
-  #  df = df.Define("electrons_p", "FCCAnalyses::ReconstructedParticle::get_p(electrons)") ##################
-  #  df = df.Define("electrons_theta", "FCCAnalyses::ReconstructedParticle::get_theta(electrons)")##################
-  #  df = df.Define("electrons_phi", "FCCAnalyses::ReconstructedParticle::get_phi(electrons)")##################
-  #  df = df.Define("electrons_q", "FCCAnalyses::ReconstructedParticle::get_charge(electrons)")##################
-  #  df = df.Define("electrons_no", "FCCAnalyses::ReconstructedParticle::get_n(electrons)")################# 
+    df = df.Define("electrons_p", "FCCAnalyses::ReconstructedParticle::get_p(electrons)") ##################
+    df = df.Define("electrons_theta", "FCCAnalyses::ReconstructedParticle::get_theta(electrons)")##################
+    df = df.Define("electrons_phi", "FCCAnalyses::ReconstructedParticle::get_phi(electrons)")##################
+    df = df.Define("electrons_q", "FCCAnalyses::ReconstructedParticle::get_charge(electrons)")##################
+    df = df.Define("electrons_no", "FCCAnalyses::ReconstructedParticle::get_n(electrons)")################# 
     
     # compute the muon isolation and store muons with an isolation cut of 0.25 in a separate column muons_sel_iso
    #
@@ -98,8 +98,8 @@ def build_graph(df, dataset):
     df = df.Define("muons_iso", "FCCAnalyses::ZHfunctions::coneIsolation(0.01, 0.5)(muons, ReconstructedParticles)")
     df = df.Define("muons_sel_iso", "FCCAnalyses::ZHfunctions::sel_iso(0.25)(muons, muons_iso)")
 
-  #  df = df.Define("electrons_iso", "FCCAnalyses::ZHfunctions::coneIsolation(0.01, 0.5)(electrons, ReconstructedParticles)")
-  #  df = df.Define("electrons_sel_iso", "FCCAnalyses::ZHfunctions::sel_iso(0.25)(electrons, electrons_iso)")
+    df = df.Define("electrons_iso", "FCCAnalyses::ZHfunctions::coneIsolation(0.01, 0.5)(electrons, ReconstructedParticles)")
+    df = df.Define("electrons_sel_iso", "FCCAnalyses::ZHfunctions::sel_iso(0.25)(electrons, electrons_iso)")
     
     
         
@@ -112,12 +112,12 @@ def build_graph(df, dataset):
     results.append(df.Histo1D(("muons_iso_cut0", "", *bins_iso), "muons_iso"))
 
 # baseline histograms, before any selection cuts (store with _cut0) electrons
- #   results.append(df.Histo1D(("electrons_p_cut0", "", *bins_p_mu), "electrons_p"))
- #   results.append(df.Histo1D(("electrons_theta_cut0", "", *bins_theta), "electrons_theta"))
- #   results.append(df.Histo1D(("electrons_phi_cut0", "", *bins_phi), "electrons_phi"))
- #   results.append(df.Histo1D(("electrons_q_cut0", "", *bins_charge), "electrons_q"))
- #   results.append(df.Histo1D(("electrons_no_cut0", "", *bins_count), "electrons_no"))
- #   results.append(df.Histo1D(("electrons_iso_cut0", "", *bins_iso), "electrons_iso"))
+    results.append(df.Histo1D(("electrons_p_cut0", "", *bins_p_mu), "electrons_p"))
+    results.append(df.Histo1D(("electrons_theta_cut0", "", *bins_theta), "electrons_theta"))
+    results.append(df.Histo1D(("electrons_phi_cut0", "", *bins_phi), "electrons_phi"))
+    results.append(df.Histo1D(("electrons_q_cut0", "", *bins_charge), "electrons_q"))
+    results.append(df.Histo1D(("electrons_no_cut0", "", *bins_count), "electrons_no"))
+    results.append(df.Histo1D(("electrons_iso_cut0", "", *bins_iso), "electrons_iso"))
     
 
     #########
@@ -136,9 +136,9 @@ def build_graph(df, dataset):
 
 ### CUT 1: at least 1 electron with at least one isolated one (electrons)
     #########
- #   df = df.Filter("electrons_no >= 1 && electrons_sel_iso.size() > 0")
- #   df = df.Define("cut1_electrons", "1")
- #   results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1_electrons"))
+    df = df.Filter("electrons_no >= 1 && electrons_sel_iso.size() > 0")
+    df = df.Define("cut1_electrons", "1")
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut1_electrons"))
 
     
     #########
@@ -151,9 +151,9 @@ def build_graph(df, dataset):
 #########
     ### CUT 2 :at least 2 opposite-sign (OS) leptons
     #########
-#    df = df.Filter("electrons_no >= 2 && abs(Sum(electrons_q)) < electrons_q.size()")
-#    df = df.Define("cut2_electrons", "2")
-#    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
+    df = df.Filter("electrons_no >= 2 && abs(Sum(electrons_q)) < electrons_q.size()")
+    df = df.Define("cut2_electrons", "2")
+    results.append(df.Histo1D(("cutFlow", "", *bins_count), "cut2_electrons"))
 
     
     # now we build the Z resonance based on the available leptons.
