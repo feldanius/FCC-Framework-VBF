@@ -73,14 +73,14 @@ def build_graph(df, dataset):
     #########
     ### CUT 5: Higgs momentum
     #########
-    df = df.Filter("higgs_p_mu > 10 && higgs_p_mu < 100")
-    df = df.Filter("higgs_p_el > 10 && higgs_p_el < 100")
+    #df = df.Filter("higgs_p_mu > 10 && higgs_p_mu < 100")
+    #df = df.Filter("higgs_p_el > 10 && higgs_p_el < 100")
 
     #########
     ### CUT 6: recoil mass window
     #########
-    df = df.Filter("higgs_recoil_m_mu < 240 && higgs_recoil_m_mu > 220")
-    df = df.Filter("higgs_recoil_m_el < 240 && higgs_recoil_m_el > 220")
+    #df = df.Filter("higgs_recoil_m_mu < 240 && higgs_recoil_m_mu > 220")
+    #df = df.Filter("higgs_recoil_m_el < 240 && higgs_recoil_m_el > 220")
 
   #  df = df.Define("higgs_m_mu_0", "higgs_m_mu[0]")
   #  df = df.Define("higgs_m_el_0", "higgs_m_el[0]")
@@ -97,6 +97,17 @@ def build_graph(df, dataset):
 ### CUT 6: recoil mass window
   #  df = df.Filter("higgs_recoil_m_mu_0 < 240 && higgs_recoil_m_mu_0 > 220")
   #  df = df.Filter("higgs_recoil_m_el_0 < 240 && higgs_recoil_m_el_0 > 220")
+
+
+    df = df.Define("higgs_m_mu_0", "higgs_m_mu.fData")
+    df = df.Define("higgs_m_el_0", "higgs_m_el.fData")
+    df = df.Define("higgs_p_mu_0", "higgs_p_mu.fData")
+    df = df.Define("higgs_p_el_0", "higgs_p_el.fData")
+    df = df.Filter("higgs_m_mu_0 > 120 && higgs_m_mu_0 < 130")
+    df = df.Filter("higgs_m_el_0 > 120 && higgs_m_el_0 < 130")
+    df = df.Filter("higgs_p_mu_0 > 10 && higgs_p_mu_0 < 100")
+    df = df.Filter("higgs_p_el_0 > 10 && higgs_p_el_0 < 100")
+ 
 
    
     #########
