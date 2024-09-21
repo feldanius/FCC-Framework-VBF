@@ -38,8 +38,8 @@ legend["tautauH"] = "tautauH"
 
 hists = {}
 
-hists["zmumu_recoil_m_mu"] = {
-    "output": "zmumu_recoil_m_mu",
+hists["higgs_recoil_m_mu"] = {
+    "output": "higgs_recoil_m_mu",
     "logy": False,
     "stack": True,
     "rebin": 100,
@@ -51,8 +51,8 @@ hists["zmumu_recoil_m_mu"] = {
     "ytitle": "Events / 100 MeV",
 }
 
-hists["zmumu_recoil_m_el"] = {
-    "output": "zmumu_recoil_m_el",
+hists["higgs_recoil_m_el"] = {
+    "output": "higgs_recoil_m_el",
     "logy": False,
     "stack": True,
     "rebin": 100,
