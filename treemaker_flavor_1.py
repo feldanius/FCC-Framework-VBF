@@ -17,7 +17,7 @@ prodTag     = "FCCee/winter2023/IDEA/"
 includePaths = ["functions.h"]
 
 #Optional: output directory, default is local running directory
-outputDir   = "./outputs/treemaker_1/flavor_1/"
+outputDir   = "./outputs/treemaker_2/flavor_2/"
 
 ## latest particle transformer model, trained on 9M jets in winter2023 samples
 model_name = "fccee_flavtagging_edm4hep_wc_v1"
@@ -185,7 +185,7 @@ class RDFanalysis:
             "cosTheta_miss",
             "missing_p",
             "jj_m",
-            "missingEnergy",
+            #"missingEnergy",
         ]
 
         # Outputs jet properties
