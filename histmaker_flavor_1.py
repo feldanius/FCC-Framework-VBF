@@ -15,15 +15,11 @@ processList = {
 # Link to the dictonary that contains all the cross section informations etc... (mandatory)
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
-# additional/custom C++ functions, defined in header files (optional)
-includePaths = ["functions.h"]
-
 # Define the input dir (optional)
-inputDir    = "./outputs/treemaker_1/flavor_1/"
+inputDir    = "./outputs/treemaker_2/flavor_2/"
 
 #Optional: output directory, default is local running directory
 outputDir   = "./outputs/histmaker_higgs/flavor_1/"
-
 
 # optional: ncpus, default is 4, -1 uses all cores available
 nCPUS       = -1
@@ -60,16 +56,17 @@ def build_graph(df, dataset):
     df = df.Define("weight", "1.0")
     weightsum = df.Sum("weight")
 
-   df = df.Define("var_type_higgs_m_mu", "decltype(higgs_m_mu)")
-   df = df.Display({"var_type_higgs_m_mu"}).Print()
+    #df = df.Define("var_type_higgs_m_mu", "decltype(higgs_m_mu)")
+    #df = df.Display({"var_type_higgs_m_mu"}).Print()
 
-    
+    #higgs_m_mu and higgs_m_el only has data until 100 GeV
    #########
     ### CUT 4: Higgs mass window
     #########
     #df = df.Filter("higgs_m_mu > 120 && higgs_m_mu < 130")
     #df = df.Filter("higgs_m_el > 120 && higgs_m_el < 130")
 
+    #higgs_p_mu has data until 120 GeV
     #########
     ### CUT 5: Higgs momentum
     #########
@@ -79,8 +76,8 @@ def build_graph(df, dataset):
     #########
     ### CUT 6: recoil mass window
     #########
-    #df = df.Filter("higgs_recoil_m_mu < 240 && higgs_recoil_m_mu > 220")
-    #df = df.Filter("higgs_recoil_m_el < 240 && higgs_recoil_m_el > 220")
+    df = df.Filter("higgs_recoil_m_mu < 240 && higgs_recoil_m_mu > 220")
+    df = df.Filter("higgs_recoil_m_el < 240 && higgs_recoil_m_el > 220")
 
   #  df = df.Define("higgs_m_mu_0", "higgs_m_mu[0]")
   #  df = df.Define("higgs_m_el_0", "higgs_m_el[0]")
