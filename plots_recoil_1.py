@@ -38,8 +38,21 @@ legend["tautauH"] = "tautauH"
 
 hists = {}
 
-hists["zmumu_recoil_m"] = {
-    "output": "zmumu_recoil_m",
+hists["zmumu_recoil_m_mu"] = {
+    "output": "zmumu_recoil_m_mu",
+    "logy": False,
+    "stack": True,
+    "rebin": 100,
+    "xmin": 120,
+    "xmax": 140,
+    "ymin": 0,
+    "ymax": 2000,
+    "xtitle": "Recoil (GeV)",
+    "ytitle": "Events / 100 MeV",
+}
+
+hists["zmumu_recoil_m_el"] = {
+    "output": "zmumu_recoil_m_el",
     "logy": False,
     "stack": True,
     "rebin": 100,
