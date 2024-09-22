@@ -119,8 +119,8 @@ class RDFanalysis:
     # Output function
     def output():
         branchList = [
-            "missingEnergy"
-            "cosTheta_miss"
+            "missingEnergy",
+            "cosTheta_miss",
             "missing_p",  # MET
             "jj_m",  # Masa invariante de los jets
         ]
