@@ -95,6 +95,10 @@ class RDFanalysis:
            # "MCRecoAssociations0": "MCRecoAssociations0",
            # "MCRecoAssociations1": "MCRecoAssociations1",
         }
+
+        collections_noleptons = copy.deepcopy(collections)  
+        collections_noleptons["PFParticles"] = "ReconstructedParticlesNoLeptons"
+
         jetClusteringHelper = ExclusiveJetClusteringHelper(collections_noleptons["PFParticles"], 2)
         df = jetClusteringHelper.define(df)
 
@@ -102,6 +106,7 @@ class RDFanalysis:
         jetFlavourHelper = JetFlavourHelper(collections_noleptons, jetClusteringHelper.jets, jetClusteringHelper.constituents)
         df = jetFlavourHelper.define(df)
         df = jetFlavourHelper.inference(weaver_preproc, weaver_model, df)
+
       
         
         df = df.Define("missingEnergy", "FCCAnalyses::ZHfunctions::missingEnergy(365., ReconstructedParticles)")
