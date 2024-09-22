@@ -81,13 +81,19 @@ class RDFanalysis:
         global jetFlavourHelper
       
         collections_noleptons = {
-            "GenParticles": "Particle",
-            "PFParticles": "ReconstructedParticlesNoLeptons",
+           "GenParticles": "Particle",
+            "PFParticles": "ReconstructedParticles",
             "PFTracks": "EFlowTrack",
             "PFPhotons": "EFlowPhoton",
             "PFNeutralHadrons": "EFlowNeutralHadron",
-            "MCRecoAssociations0": "MCRecoAssociations0",
-            "MCRecoAssociations1": "MCRecoAssociations1",
+            "TrackState": "EFlowTrack_1",
+            "TrackerHits": "TrackerHits",
+            "CalorimeterHits": "CalorimeterHits",
+            "dNdx": "EFlowTrack_2",
+            "PathLength": "EFlowTrack_L",
+            "Bz": "magFieldBz",
+           # "MCRecoAssociations0": "MCRecoAssociations0",
+           # "MCRecoAssociations1": "MCRecoAssociations1",
         }
         jetClusteringHelper = ExclusiveJetClusteringHelper(collections_noleptons["PFParticles"], 2)
         df = jetClusteringHelper.define(df)
@@ -113,6 +119,8 @@ class RDFanalysis:
     # Output function
     def output():
         branchList = [
+            "missingEnergy"
+            "cosTheta_miss"
             "missing_p",  # MET
             "jj_m",  # Masa invariante de los jets
         ]
