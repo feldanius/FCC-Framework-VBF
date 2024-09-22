@@ -80,7 +80,7 @@ class RDFanalysis:
         global jetClusteringHelper
         global jetFlavourHelper
       
-        collections_noleptons = {
+        collections = {
            "GenParticles": "Particle",
             "PFParticles": "ReconstructedParticles",
             "PFTracks": "EFlowTrack",
