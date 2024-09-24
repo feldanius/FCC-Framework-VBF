@@ -16,7 +16,9 @@ processList = {
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 # Define the input dir (optional)
-inputDir    = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
+#inputDir    = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
+
+inputDir    = "\\cernbox-smb\eos\user\f\fdmartin\FCC365_jets_no_e_mu"
 
 #Optional: output directory, default is local running directory
 outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging"
