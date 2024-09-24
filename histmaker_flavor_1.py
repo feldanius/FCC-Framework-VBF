@@ -3,20 +3,20 @@ processList = {
    'wzp6_ee_eeH_ecm365':    {'fraction':1, 'crossSection': 0.00739}, 
     'wzp6_ee_mumuH_ecm365':  {'fraction':1, 'crossSection': 0.004185},
     'wzp6_ee_tautauH_ecm365':   {'fraction':1, 'crossSection': 0.004172},
-    'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
-    'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
+  #  'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
+  #  'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
    # 'p8_ee_ZZ_ecm365': {'fraction':1, 'crossSection': 0.6428},
-   # 'wzp6_ee_nunuH_ecm365': {'fraction':1, 'crossSection': 0.05394},
+    'wzp6_ee_nunuH_ecm365': {'fraction':1, 'crossSection': 0.05394},
 }
 
 # Production tag when running over EDM4Hep centrally produced events, this points to the yaml files for getting sample statistics (mandatory)
-prodTag     = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
+#prodTag     = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
 
 # Link to the dictonary that contains all the cross section informations etc... (mandatory)
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 # Define the input dir (optional)
-#inputDir    = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
+inputDir    = "./outputs/treemaker_bjet/flavor"
 
 #Optional: output directory, default is local running directory
 outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging"
