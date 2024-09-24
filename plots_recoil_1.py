@@ -2,15 +2,15 @@ import ROOT
 
 # global parameters
 intLumi = 1
-intLumiLabel = "L = 2.4 ab^{-1}"
+intLumiLabel = "L = 3 ab^{-1}"
 ana_tex = "(VBF) e^{+}e^{-} #rightarrow #nu^{+}#nu^{-} H, H #rightarrow  b b"
 delphesVersion = "3.4.2"
 energy = 365.0
 collider = "FCC-ee"
 formats = ["png", "pdf"]
 
-outdir         = './outputs/plots/flavor_higgs/' 
-inputDir       = './outputs/histmaker_higgs/flavor_1/' 
+outdir         = '/eos/user/f/fdmartin/FCC365_histograms/only_b_tagging' 
+inputDir       = '/eos/user/f/fdmartin/FCC365_jets_b_tagging' 
 
 plotStatUnc = True
 
