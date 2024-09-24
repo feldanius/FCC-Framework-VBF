@@ -26,7 +26,7 @@ nCPUS       = -1
 
 # scale the histograms with the cross-section and integrated luminosity
 doScale = True
-intLumi = 2400000 # 2.4 /ab
+intLumi = 3000000 # 3 /ab
 
 
 # define some binning for various histograms
