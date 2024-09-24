@@ -20,7 +20,7 @@ includePaths = ["functions.h"]
 
 #outputDir   = "./outputs/treemaker_no_cuts/flavor/"
 
-outputDir   = "https://cernbox.cern.ch/files/spaces/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
+outputDir   = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
 
 ## latest particle transformer model, trained on 9M jets in winter2023 samples
 model_name = "fccee_flavtagging_edm4hep_wc_v1"
