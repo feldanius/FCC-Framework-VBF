@@ -10,13 +10,13 @@ collider = "FCC-ee"
 formats = ["png", "pdf"]
 
 outdir         = '/eos/user/f/fdmartin/FCC365_histograms/only_b_tagging' 
-inputDir       = './outputs/treemaker_bjet/flavor' 
+inputDir       = './outputs/treemaker_bjet/plots' 
 
 plotStatUnc = True
 
 colors = {}
 colors["VBF"] = ROOT.kRed
-##colors["ZZ"] = ROOT.kGreen + 2
+colors["ZZ"] = ROOT.kGreen + 2
 colors["WW"] = ROOT.kCyan - 2
 colors["tt"] = ROOT.kBlue - 2
 colors["eeH"] = ROOT.kMagenta - 8
@@ -24,13 +24,12 @@ colors["mumuH"] = ROOT.kMagenta - 5
 colors["tautauH"] = ROOT.kMagenta - 1
 
 procs = {}
-procs["signal"] = {"VBF": ["wzp6_ee_nunuH_ecm365"]}
-#    "ZZ": ["p8_ee_ZZ_ecm365"],
-procs["backgrounds"] = { "WW": ["p8_ee_WW_ecm365"], "tt": ["p8_ee_tt_ecm365"], "eeH": ["wzp6_ee_eeH_ecm365"], "mumuH": ["wzp6_ee_mumuH_ecm365"], "tautauH": ["wzp6_ee_tautauH_ecm365"] }
+procs["signal"] = {"VBF": ["wzp6_ee_nunuH_ecm365"]}   
+procs["backgrounds"] = { "ZZ": ["p8_ee_ZZ_ecm365"], "WW": ["p8_ee_WW_ecm365"], "tt": ["p8_ee_tt_ecm365"], "eeH": ["wzp6_ee_eeH_ecm365"], "mumuH": ["wzp6_ee_mumuH_ecm365"], "tautauH": ["wzp6_ee_tautauH_ecm365"] }
 
 legend = {}
 legend["VBF"] = "VBF"
-#legend["ZZ"] = "ZZ"
+legend["ZZ"] = "ZZ"
 legend["WW"] = "WW"
 legend["tt"] = "tt"
 legend["eeH"] = "eeH"
@@ -70,8 +69,8 @@ hists["jj_m"] = {
     "logy": False,
     "stack": True,
     "rebin": 2,
-    "xmin": 50,
-    "xmax": 150,
+    "xmin": 0,
+    "xmax": 365,
     "ymin": 0,
     "ymax": 30000,
     "xtitle": "m_{jj} (GeV)",
@@ -86,7 +85,7 @@ hists["scoresum_B"] = {
     "xmin": 0,
     "xmax": 1.0,
     "ymin": 1,
-    "ymax": 100000000,
+    "ymax": 500000000,
     "xtitle": "p_{1}(B) + p_{2}(B)",
     "ytitle": "Events",
 }
@@ -100,7 +99,7 @@ hists["cosTheta_miss"] = {
     "xmin": 0,
     "xmax": 1.0,
     "ymin": 0,
-    "ymax": 5,
+    "ymax": 10,
     "xtitle": "p_{1}(B) + p_{2}(B)",
     "ytitle": "Events",
 }
