@@ -3,9 +3,9 @@ processList = {
    'wzp6_ee_eeH_ecm365':    {'fraction':1, 'crossSection': 0.00739}, 
     'wzp6_ee_mumuH_ecm365':  {'fraction':1, 'crossSection': 0.004185},
     'wzp6_ee_tautauH_ecm365':   {'fraction':1, 'crossSection': 0.004172},
-  #  'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
-  #  'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
-   # 'p8_ee_ZZ_ecm365': {'fraction':1, 'crossSection': 0.6428},
+    'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
+    'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
+    'p8_ee_ZZ_ecm365': {'fraction':1, 'crossSection': 0.6428},
     'wzp6_ee_nunuH_ecm365': {'fraction':1, 'crossSection': 0.05394},
 }
 
