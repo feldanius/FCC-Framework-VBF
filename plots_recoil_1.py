@@ -72,7 +72,7 @@ hists["jj_m"] = {
     "xmin": 0,
     "xmax": 365,
     "ymin": 0,
-    "ymax": 30000,
+    "ymax": 50000,
     "xtitle": "m_{jj} (GeV)",
     "ytitle": "Events / 2 GeV",
 }
@@ -85,7 +85,7 @@ hists["scoresum_B"] = {
     "xmin": 0,
     "xmax": 1.0,
     "ymin": 1,
-    "ymax": 500000000,
+    "ymax": 1000000000,
     "xtitle": "p_{1}(B) + p_{2}(B)",
     "ytitle": "Events",
 }
@@ -99,7 +99,7 @@ hists["cosTheta_miss"] = {
     "xmin": 0,
     "xmax": 1.0,
     "ymin": 0,
-    "ymax": 10,
+    "ymax": 15,
     "xtitle": "cosTheta_miss",
     "ytitle": "Events",
 }
