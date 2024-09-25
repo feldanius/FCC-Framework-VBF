@@ -1,11 +1,11 @@
 import os, copy
 # list of processes (mandatory)
 processList = {
-#   'wzp6_ee_eeH_ecm365':    {'fraction':1, 'crossSection': 0.00739}, 
-#    'wzp6_ee_mumuH_ecm365':  {'fraction':1, 'crossSection': 0.004185},
-#    'wzp6_ee_tautauH_ecm365':   {'fraction':1, 'crossSection': 0.004172},
-#    'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
-#    'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
+    'wzp6_ee_eeH_ecm365':    {'fraction':1, 'crossSection': 0.00739}, 
+    'wzp6_ee_mumuH_ecm365':  {'fraction':1, 'crossSection': 0.004185},
+    'wzp6_ee_tautauH_ecm365':   {'fraction':1, 'crossSection': 0.004172},
+    'p8_ee_tt_ecm365': {'fraction':1, 'crossSection': 0.8},
+    'p8_ee_WW_ecm365': {'fraction':1, 'crossSection': 10.7165},
     'p8_ee_ZZ_ecm365': {'fraction':1, 'crossSection': 0.6428},
     'wzp6_ee_nunuH_ecm365': {'fraction':1, 'crossSection': 0.05394},
 }
@@ -17,8 +17,6 @@ prodTag     = "FCCee/winter2023/IDEA/"
 includePaths = ["functions.h"]
 
 #Optional: output directory, default is local running directory
-
-#outputDir   = "./outputs/treemaker_no_cuts/flavor/"
 
 outputDir   = "/eos/user/f/fdmartin/FCC365_jets_no_e_mu"
 
@@ -95,8 +93,6 @@ class RDFanalysis:
             "dNdx": "EFlowTrack_2",
             "PathLength": "EFlowTrack_L",
             "Bz": "magFieldBz",
-           # "MCRecoAssociations0": "MCRecoAssociations0",
-           # "MCRecoAssociations1": "MCRecoAssociations1",
         }
 
         collections_noleptons = copy.deepcopy(collections)  
