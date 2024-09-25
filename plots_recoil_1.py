@@ -100,6 +100,6 @@ hists["cosTheta_miss"] = {
     "xmax": 1.0,
     "ymin": 0,
     "ymax": 10,
-    "xtitle": "p_{1}(B) + p_{2}(B)",
+    "xtitle": "cosTheta_miss",
     "ytitle": "Events",
 }
