@@ -72,7 +72,7 @@ hists["missingEnergy_energy"] = {
     "xmin": 0,
     "xmax": 200,
     "ymin": 0,
-    "ymax": 1000,
+    "ymax": 100,
     "xtitle": "MET (GeV)",
     "ytitle": "Events / 2 GeV",
 }
