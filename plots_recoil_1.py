@@ -64,6 +64,32 @@ hists = {}
 #    "ytitle": "Events / 100 MeV",
 #}
 
+hists["missingEnergy_energy"] = {
+    "output": "missingEnergy_energy",
+    "logy": False,
+    "stack": True,
+    "rebin": 2,
+    "xmin": 0,
+    "xmax": 200,
+    "ymin": 0,
+    "ymax": 1000,
+    "xtitle": "MET (GeV)",
+    "ytitle": "Events / 2 GeV",
+}
+
+hists["missing_p"] = {
+    "output": "missing_p",
+    "logy": False,
+    "stack": True,
+    "rebin": 2,
+    "xmin": 0,
+    "xmax": 200,
+    "ymin": 0,
+    "ymax": 2500,
+    "xtitle": "Missing_p (GeV)",
+    "ytitle": "Events / 2 GeV",
+}
+
 hists["jj_m"] = {
     "output": "jj_m",
     "logy": False,
