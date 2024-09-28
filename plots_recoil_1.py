@@ -85,7 +85,7 @@ hists["missing_p"] = {
     "xmin": 0,
     "xmax": 200,
     "ymin": 0,
-    "ymax": 3500,
+    "ymax": 4500,
     "xtitle": "Missing_p (GeV)",
     "ytitle": "Events / 2 GeV",
 }
