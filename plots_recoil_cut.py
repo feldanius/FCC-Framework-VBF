@@ -98,7 +98,7 @@ hists["jj_m"] = {
     "xmin": 50,
     "xmax": 150,
     "ymin": 0,
-    "ymax": 30000,
+    "ymax": 40000,
     "xtitle": "m_{jj} (GeV)",
     "ytitle": "Events / 2 GeV",
 }
