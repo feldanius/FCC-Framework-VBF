@@ -9,7 +9,7 @@ energy = 365.0
 collider = "FCC-ee"
 formats = ["png", "pdf"]
 
-outdir         = '/eos/user/f/fdmartin/FCC365_histograms/b_tagging_jet cut' 
+outdir         = '/eos/user/f/fdmartin/FCC365_histograms/b_tagging_jet_cut' 
 inputDir       = './outputs/treemaker_bjet/plots/cuts/dijet_cut_50_150' 
 
 plotStatUnc = True
