@@ -19,7 +19,7 @@ procDict = "FCCee_procDict_winter2023_IDEA.json"
 inputDir    = "./outputs/treemaker_bjet/flavor"
 
 #Optional: output directory, default is local running directory
-outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging"
+outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging_cut"
 
 # optional: ncpus, default is 4, -1 uses all cores available
 nCPUS       = -1
