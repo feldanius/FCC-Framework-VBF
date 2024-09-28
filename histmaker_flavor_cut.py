@@ -64,7 +64,7 @@ def build_graph(df, dataset):
     #########
     ### CUT : cut jj_m
     #########
-    df = df.Filter("jj_m > 50 && zmumu_p < 150")
+    df = df.Filter("jj_m > 50 && jj_m < 150")
 
     df = df.Filter("scoresum_B > 1.0")
 
