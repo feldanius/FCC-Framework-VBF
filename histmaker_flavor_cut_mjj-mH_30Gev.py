@@ -36,7 +36,7 @@ bins_p_ll = (2000, 0, 200) # 100 MeV bins
 bins_recoil = (200000, 0, 200) # 1 MeV bins 
 bins_cosThetaMiss = (10000, 0, 1)
 
-bins_m_jj = (100, 50, 150)  # 1 GeV bins
+bins_m_jj = (100, 0, 365)  # 1 GeV bins
 bins_score = (50, 0, 2.0)  #
 
 bins_theta = (500, -5, 5)
