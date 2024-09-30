@@ -16,8 +16,8 @@ processList = {
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 # Define the input dir (optional)
-#inputDir    = "./outputs/treemaker_bjet/flavor"
-inputDir    = "./outputs/treemaker_bjet/plots/cuts/dijet_cut_mjj-mH_30Gev"
+inputDir    = "./outputs/treemaker_bjet/flavor"
+#inputDir    = "./outputs/treemaker_bjet/plots/cuts/dijet_cut_mjj-mH_30Gev"
 
 #Optional: output directory, default is local running directory
 outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging_cut_missing_p-15"
@@ -65,7 +65,7 @@ def build_graph(df, dataset):
     #########
     ### CUT : cut jj_m
     #########
-    #df = df.Filter("jj_m > 95 && jj_m < 155")
+    df = df.Filter("jj_m > 95 && jj_m < 155")
     df = df.Filter("missing_p > 15 && missing_p < 170")
     df = df.Filter("scoresum_B > 1.0")
 
