@@ -16,7 +16,8 @@ processList = {
 procDict = "FCCee_procDict_winter2023_IDEA.json"
 
 # Define the input dir (optional)
-inputDir    = "./outputs/treemaker_bjet/flavor"
+#inputDir    = "./outputs/treemaker_bjet/flavor"
+inputDir    = "./outputs/treemaker_bjet/plots/cuts/dijet_cut_mjj-mH_30Gev"
 
 #Optional: output directory, default is local running directory
 outputDir   = "/eos/user/f/fdmartin/FCC365_jets_b_tagging_cut_missing_p-15"
@@ -59,14 +60,14 @@ def build_graph(df, dataset):
     #########
     ### CUT : cut on the jet tagging score to select H->bb events
     #########
-    df = df.Define("scoresum_B", "recojet_isB[0] + recojet_isB[1]")
+    #df = df.Define("scoresum_B", "recojet_isB[0] + recojet_isB[1]")
     results.append(df.Histo1D(("scoresum_B", "", *bins_score), "scoresum_B"))
     #########
     ### CUT : cut jj_m
     #########
-    df = df.Filter("jj_m > 95 && jj_m < 155")
+    #df = df.Filter("jj_m > 95 && jj_m < 155")
     df = df.Filter("missing_p > 15 && missing_p < 170")
-    df = df.Filter("scoresum_B > 1.0")
+    #df = df.Filter("scoresum_B > 1.0")
 
     #results.append(df.Histo1D(("higgs_recoil_m_mu", "", *bins_recoil), "higgs_recoil_m_mu"))
     #results.append(df.Histo1D(("higgs_recoil_m_el", "", *bins_recoil), "higgs_recoil_m_el"))
