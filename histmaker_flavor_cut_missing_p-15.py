@@ -66,7 +66,8 @@ def build_graph(df, dataset):
     ### CUT : cut jj_m
     #########
     df = df.Filter("jj_m > 95 && jj_m < 155")
-    df = df.Filter("missing_p > 15 && missing_p < 170")
+    df = df.Filter("All(missing_p > 15 && missing_p < 170)")
+   #df = df.Filter("missing_p > 15 && missing_p < 170")
     df = df.Filter("scoresum_B > 1.0")
 
     #results.append(df.Histo1D(("higgs_recoil_m_mu", "", *bins_recoil), "higgs_recoil_m_mu"))
