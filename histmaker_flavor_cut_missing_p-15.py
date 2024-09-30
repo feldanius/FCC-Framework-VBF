@@ -37,7 +37,7 @@ bins_p_ll = (2000, 0, 200) # 100 MeV bins
 bins_recoil = (200000, 0, 200) # 1 MeV bins 
 bins_cosThetaMiss = (10000, 0, 1)
 
-bins_m_jj = (100, 50, 150)  # 1 GeV bins
+bins_m_jj = (100, 95, 155)  # 1 GeV bins
 bins_score = (50, 0, 2.0)  #
 
 bins_theta = (500, -5, 5)
@@ -60,14 +60,14 @@ def build_graph(df, dataset):
     #########
     ### CUT : cut on the jet tagging score to select H->bb events
     #########
-    #df = df.Define("scoresum_B", "recojet_isB[0] + recojet_isB[1]")
+    df = df.Define("scoresum_B", "recojet_isB[0] + recojet_isB[1]")
     results.append(df.Histo1D(("scoresum_B", "", *bins_score), "scoresum_B"))
     #########
     ### CUT : cut jj_m
     #########
     #df = df.Filter("jj_m > 95 && jj_m < 155")
     df = df.Filter("missing_p > 15 && missing_p < 170")
-    #df = df.Filter("scoresum_B > 1.0")
+    df = df.Filter("scoresum_B > 1.0")
 
     #results.append(df.Histo1D(("higgs_recoil_m_mu", "", *bins_recoil), "higgs_recoil_m_mu"))
     #results.append(df.Histo1D(("higgs_recoil_m_el", "", *bins_recoil), "higgs_recoil_m_el"))
