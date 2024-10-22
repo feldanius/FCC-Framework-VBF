@@ -47,9 +47,7 @@ bins_iso = (500, 0, 5)
 def build_graph(df, dataset):
 
     results = []
-    df = df.Define("event_weight", "3.0")
-    weightsum = df.Sum("event_weight")
-   
+    
     #########
     ### CUT : cut on the jet tagging score to select H->bb events
     #########
@@ -71,4 +69,5 @@ def build_graph(df, dataset):
     results.append(df.Histo1D(("cosTheta_miss", "", *bins_cosThetaMiss), "cosTheta_miss", "event_weight"))
     results.append(df.Histo1D(("missing_p", "", *bins_p_ll), "missing_p", "event_weight"))
 
+    weightsum = df.Sum("event_weight")
     return results, weightsum
