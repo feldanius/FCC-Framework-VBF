@@ -15,21 +15,18 @@ inputDir       = './outputs/treemaker_bjet/plots/cuts/dijet_cut_missing_p-15'
 plotStatUnc = True
 
 colors = {}
-colors["VBF_ee"] = ROOT.kRed
-colors["VBF_mumu"] = ROOT.kRed
+colors["VBF"] = ROOT.kRed
 colors["ZZ"] = ROOT.kGreen + 2
 colors["WW"] = ROOT.kCyan - 2
 colors["tt"] = ROOT.kBlue - 2
 colors["ZH"] = ROOT.kMagenta - 8
 
 procs = {}
-procs["signal"] = {"VBF_ee": ["wzp6_ee_nuenueH_Hbb_ecm365"], "VBF_mumu": ["wzp6_ee_numunumuH_Hbb_ecm365_vbf"]} 
-#
+procs["signal"] = {"VBF": ["wzp6_ee_nuenueH_Hbb_ecm365", "wzp6_ee_numunumuH_Hbb_ecm365_vbf"]}
 procs["backgrounds"] = { "ZZ": ["p8_ee_ZZ_ecm365"], "WW": ["p8_ee_WW_ecm365"], "tt": ["p8_ee_tt_ecm365"], "ZH": ["wzp6_ee_numunumuH_Hbb_ecm365"] }
 
 legend = {}
-legend["VBF_ee"] = "VBF"
-legend["VBF_mumu"] = "VBF"
+legend["VBF"] = "VBF"
 legend["ZZ"] = "ZZ"
 legend["WW"] = "WW"
 legend["tt"] = "tt"
