@@ -1,6 +1,5 @@
 # list of processes (mandatory)
 processList = {
-    'wzp6_ee_numunumuH_Hbb_ecm365': {'fraction':1, 'crossSection': 0.004814},
     'wzp6_ee_numunumuH_Hbb_ecm365_vbf': {'fraction':1, 'crossSection': 0.004814},
     'wzp6_ee_nuenueH_Hbb_ecm365':  {'fraction':1, 'crossSection': 0.02181},
     'wzp6_ee_nunuH_Hbb_ecm365':   {'fraction':1, 'crossSection': 0.03143},
