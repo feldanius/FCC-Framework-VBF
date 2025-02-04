@@ -1,5 +1,5 @@
 import ROOT
-from ROOT import RooFit, RooRealVar, RooPoisson, RooArgSet, RooDataSet, RooFormulaVar
+from ROOT import RooFit, RooRealVar, RooPoisson, RooArgSet, RooDataSet, RooFormulaVar, RooArgList
 
 # Luminosidad en fb^-1
 Lumi = 3000  # 3 ab^-1
