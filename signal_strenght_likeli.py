@@ -18,9 +18,11 @@ processes = {
     "wzp6_ee_nunuH_Hbb_ecm365": {"sigma": 0.004814, "eff": 0.0081}
 }
 
+eff_vars = {p: RooRealVar(f"eff_{p}", f"Efficiency {p}", processes[p]["eff"], 0, 1) for p in processes}
+
 # Cálculo del número esperado de eventos
-N_exp_signal = sum(processes[p]["sigma"] * Lumi * eff_signal_var for p in ["wzp6_ee_nuenueH_Hbb_ecm365", "wzp6_ee_numunumuH_Hbb_ecm365_vbf"])
-N_exp_background = sum(processes[p]["sigma"] * Lumi * eff_background_var for p in ["p8_ee_ZZ_ecm365", "p8_ee_WW_ecm365", "p8_ee_tt_ecm365", "wzp6_ee_nunuH_Hbb_ecm365"])
+N_exp_signal = sum(processes[p]["sigma"] * Lumi * eff_vars[p] for p in ["wzp6_ee_nuenueH_Hbb_ecm365", "wzp6_ee_numunumuH_Hbb_ecm365_vbf"])
+N_exp_background = sum(processes[p]["sigma"] * Lumi * eff_vars[p] for p in ["p8_ee_ZZ_ecm365", "p8_ee_WW_ecm365", "p8_ee_tt_ecm365", "wzp6_ee_nunuH_Hbb_ecm365"])
 
 # Número total de eventos esperados con mu
 N_exp_total = RooRealVar("N_exp_total", "Expected total events", 0, 1e6)
