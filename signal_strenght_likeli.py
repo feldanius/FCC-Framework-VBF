@@ -17,6 +17,9 @@ processes = {
 # Definir variables de eficiencia como constantes
 eff_vars = {p: RooRealVar(f"eff_{p}", f"Efficiency {p}", processes[p]["eff"], 0, 1) for p in processes}
 
+# Definir variables de sección transversal (sigma) como constantes
+sigma_vars = {p: RooRealVar(f"sigma_{p}", f"Cross-section {p}", processes[p]["sigma"], 0, 100) for p in processes}
+
 # Luminosidad en fb^-1
 Lumi = 3000  # 3 ab^-1
 
@@ -24,9 +27,10 @@ Lumi = 3000  # 3 ab^-1
 Lumi_var = RooRealVar("Lumi", "Luminosidad", Lumi, Lumi, Lumi)
 Lumi_var.setConstant(True)
 
-# Fijar las eficiencias como constantes
+# Fijar las eficiencias y secciones transversales como constantes
 for p in processes:
     eff_vars[p].setConstant(True)  # Si no quieres que se ajusten, mantenlos como constantes
+    sigma_vars[p].setConstant(True)
 
 # Cálculo del número esperado de eventos
 N_exp_signal_formula = "mu * (sigma_wzp6_ee_nuenueH_Hbb_ecm365 * eff_wzp6_ee_nuenueH_Hbb_ecm365 + sigma_wzp6_ee_numunumuH_Hbb_ecm365_vbf * eff_wzp6_ee_numunumuH_Hbb_ecm365_vbf)"
@@ -34,11 +38,14 @@ N_exp_background_formula = "sigma_p8_ee_ZZ_ecm365 * eff_p8_ee_ZZ_ecm365 + sigma_
 
 # Crear variables para los eventos esperados en la señal y el fondo
 N_exp_signal = RooFormulaVar("N_exp_signal", "Expected signal events", N_exp_signal_formula, 
-                             RooArgList(mu, eff_vars["wzp6_ee_nuenueH_Hbb_ecm365"], eff_vars["wzp6_ee_numunumuH_Hbb_ecm365_vbf"]))
+                             RooArgList(mu, sigma_vars["wzp6_ee_nuenueH_Hbb_ecm365"], sigma_vars["wzp6_ee_numunumuH_Hbb_ecm365_vbf"], 
+                                        eff_vars["wzp6_ee_nuenueH_Hbb_ecm365"], eff_vars["wzp6_ee_numunumuH_Hbb_ecm365_vbf"]))
 
 N_exp_background = RooFormulaVar("N_exp_background", "Expected background events", N_exp_background_formula, 
-                                 RooArgList(eff_vars["p8_ee_ZZ_ecm365"], eff_vars["p8_ee_WW_ecm365"], 
-                                            eff_vars["p8_ee_tt_ecm365"], eff_vars["wzp6_ee_nunuH_Hbb_ecm365"]))
+                                 RooArgList(sigma_vars["p8_ee_ZZ_ecm365"], eff_vars["p8_ee_ZZ_ecm365"], 
+                                            sigma_vars["p8_ee_WW_ecm365"], eff_vars["p8_ee_WW_ecm365"], 
+                                            sigma_vars["p8_ee_tt_ecm365"], eff_vars["p8_ee_tt_ecm365"], 
+                                            sigma_vars["wzp6_ee_nunuH_Hbb_ecm365"], eff_vars["wzp6_ee_nunuH_Hbb_ecm365"]))
 
 # Número total de eventos esperados con mu
 N_exp_total = RooRealVar("N_exp_total", "Expected total events", 0, 1e6)
